@@ -1,0 +1,212 @@
+/* /* Some CSS Setup - nothing to do with flexbox */
+/* everything between the dashed-lines have been unchanged  */
+/* ---------------------------------------------------------------- */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+}
+
+a {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px 5px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+a:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/* ------------------------------------------------------------ */
+
+/* The code below has had changes, they are labelled with a comment. */
+
+.wrapper {
+/* Added justify content - center  */
+  justify-content: center;
+/* Extended the max-width to 1250 to cover a larger percentage of the screen */
+
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+/* Flex Container */
+.flex-nav ul {
+/* Display flex added to initalise the flex-box  */
+  display:flex;
+/* Flex-direction set as row to set the direction of the flex-box main axis to horizontal (left-right)*/
+  flex-direction: row;
+/* Justify-content set as space-evenly to spread the items evenly across the flex-box */
+  justify-content: space-evenly;
+
+  border: 1px solid black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* The above code block targetting ' .flex-nav ul ' produces an evenly spaced row but there were empty spaces in 
+between and around which needed filling. To sort this out: items 1-6 needed a total width of 75% of the flexbox, 
+and the social links needed the other 25%. */
+
+/* The specific items were targetted by the nthchild() method. */
+.flex-nav ul li:nth-child(1){
+  display:flex;
+/* Setting the flex-growth as 1, flex-shrink as 0 and flex-basis as auto, distributes the item by using up empty space if there is any. */
+  flex: 1 0 auto;
+}
+.flex-nav ul li:nth-child(2){
+  display:flex;
+  flex: 1 0 auto;
+}
+.flex-nav ul li:nth-child(3){
+  display:flex;
+  flex: 1 0 auto;
+}
+.flex-nav ul li:nth-child(4){
+  display:flex;
+  flex: 1 0 auto;
+}
+.flex-nav ul li:nth-child(5){
+  display:flex;
+  flex: 1 0 auto;
+}
+.flex-nav ul li:nth-child(6){
+  display:flex;
+  flex: 1 0 auto;
+}
+/* List items: social link icons - 25% total width:  */
+.flex-nav ul li:nth-child(7){
+  display:flex;
+/* Had we used the same setting as the first 6 items, we would end up with the social links exceeding the 25% width. */
+/* To avoid this, the flex-growth was set to 0.5 (half the item 1) meant the social icons took up less of the unused space when flexing to fill the box. */
+  flex: 0.5 0 auto;
+}
+.flex-nav ul li:nth-child(8){
+  display:flex;
+  flex: 0.5 0 auto;
+}
+.flex-nav ul li:nth-child(9){
+  display:flex;
+  flex: 0.5 0 auto;
+}
+.flex-nav ul li:nth-child(10){
+  display:flex;
+  flex: 0.5 0 auto;
+}
+
+/* Media query when screen width reaches 1000px */
+@media all and (max-width: 1000px) {
+  .flex-nav ul {
+    display:flex;
+    flex-direction: row;
+/* Justify-content changes from space-evenly to space around */
+    justify-content: space-around;
+/* Flex-wrap added to alter row dynamics further with nth-child targetting*/
+    flex-wrap: wrap;
+
+    border: 1px solid black;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+/* Unordered list settings to fill the row flex-wrap to the correct dimensions (2 column, 3 rows and 4 column final row) */
+/* List items: items 1-6 - 50% width each (they will become two columns)*/
+  .flex-nav ul li:nth-child(1){
+    width: 50%;
+  }
+  .flex-nav ul li:nth-child(2){
+    width:50%;
+  }
+  .flex-nav ul li:nth-child(3){
+    width: 50%;
+  }
+  .flex-nav ul li:nth-child(4){
+    width: 50%;
+  }
+  .flex-nav ul li:nth-child(5){
+    width: 50%;
+  }
+  .flex-nav ul li:nth-child(6){
+    width: 50%;
+  }
+/* List items: social link icons - 25% width each (thus 4 side-by-side needed to make a full row (100%) )  */
+  .flex-nav ul li:nth-child(7){
+    width: 25%;
+  }
+  .flex-nav ul li:nth-child(8){
+    width: 25%;
+  }
+  .flex-nav ul li:nth-child(9){
+    width: 25%;
+  }
+  .flex-nav ul li:nth-child(10){
+    width: 25%;
+  }
+}
+
+/* Media query when screen width reaches 500px */
+@media all and (max-width: 500px) {
+/* Remained the same as the first media query */
+  .flex-nav ul {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    border: 1px solid black;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+/* Unordered list settings to fill the row flex-wrap to the correct dimensions (1 column, 6 rows and 4 column final row) */
+/* List items: items 1-6 - 100% width each (they will fill up a row each, thus the wrap will force them to stack one-another)*/
+  .flex-nav ul li:nth-child(1){
+    width: 100%;
+  }
+  .flex-nav ul li:nth-child(2){
+    width: 100%;
+  }
+  .flex-nav ul li:nth-child(3){
+    width: 100%;
+  }
+  .flex-nav ul li:nth-child(4){
+    width: 100%;
+  }
+  .flex-nav ul li:nth-child(5){
+    width: 100%;
+  }
+  .flex-nav ul li:nth-child(6){
+    width: 100%;
+  }
+/* List items: social link icons - remained 25% width each (thus 4 side-by-side needed to make a full row (100%) )  */
+  .flex-nav ul li:nth-child(7){
+    width: 25%;
+  }
+  .flex-nav ul li:nth-child(8){
+    width: 25%;
+  }
+  .flex-nav ul li:nth-child(9){
+    width: 25%;
+  }
+  .flex-nav ul li:nth-child(10){
+    width: 25%;
+  }
+}
